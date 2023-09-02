@@ -24,9 +24,25 @@ function resetarItens() {
     atualizarQuantidade();
 }
 
+function exibirQtd() {
+    let quantidadeTotal = 0;
+    let produto = null
+    
+    for (let i = 0; i < listItens.length; i++) { //Exibi cada item e sua quantidaed
+        quantidadeTotal += listItens[i].quantidade;
+        produto = listItens[i].produto;
+    }
+
+    return `${produto} x${quantidadeTotal}`;
+}
+
 function atualizarQuantidade() {
     itensQ = listItens.length; // Atualiza a quantidade com base no tamanho da lista de itens
     let inputItens = document.getElementById('quantity');
+    let exibirItem = document.getElementById('itensArea');
+
+    exibirItem.value = exibirQtd();
+
     inputItens.value = itensQ;
     console.log(listItens);
 }
@@ -43,9 +59,11 @@ function calcularConta() {
     // Aplica o desconto de happy hour se necessário (até às 19h)
     let data = new Date();
     let hora = data.getHours();
+    console.log(typeof(hora))
 
     if (hora < 19 && listItens.length > 0) { // Aplica desconto apenas se estiver antes das 19h e houver itens pedidos
-        valorTotal *= 0.9; // Aplica um desconto de 10%
+        let desconto = valorTotal * (10/100); 
+        valorTotal -= desconto; // Aplica um desconto de 10%
     }
 
     // Exibe o valor total na página HTML
