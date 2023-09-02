@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio atividade</title>
+
+    <style type="text/css">
+        .reset {
+            background-color: brown;
+            width: 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .pay {
+            background-color: darkolivegreen;
+            width: 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #itensArea {
+            height: auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #quantity {
+            width: 50px;
+            background-color: #fff;
+            text-align: center;
+            color: black;
+        }
+
+        .increment {
+            color: darkgreen;
+        }
+
+        decrement {
+            color: brown;
+        }
+
+        .listContent {
+            border: 1px solid #ccc;
+            width: 300px;
+            margin-bottom: 10px;
+            background-color: #ccc;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul a {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #valorConta {
+            height: 100px;
+            display: flexbox;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form onsubmit="calcularConta(); return false;"> <!--Quando um formulário é submetido, os dados inseridos nos
+    campos do formulário são geralmente enviados para um servidor web para serem processados. No entanto, ao usar o
+    return false;, você está indicando que não deseja que o formulário seja realmente enviado ao servidor, mas sim
+    quer executar uma função JavaScript específica (no caso, a função converterPolegadas();) quando o formulário
+    é submetido, sem atualizar a página.-->
+
+        <!--  -->
+        <div class="listContent">
+            <ul>
+                <li id="primaryList">
+                    <a><input type="checkbox" onclick="adicionarItem()">Ceveja </a>
+                </li>
+
+                <ul id="subList">
+                    <li>
+                        <a onclick="adicionarItem()" class="increment" href="#">+</a>
+                        <input type="text" id="quantity" disabled>
+                        <a onclick="removerItens()" class="decrement" href="#">-</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+
+
+        <br><br>
+        <label>Itens:</label>
+        <input class="reset" onclick="resetarItens()" type="button" placeholder="Resetar">
+        <input type="text" disabled id="itensArea">
+        <input type="submit" onclick="calcularConta()">
+
+        <br><br>
+
+        <label>Total:</label>
+        <input type="text" disabled id="valorConta">
+    </form>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
