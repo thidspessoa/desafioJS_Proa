@@ -1,5 +1,6 @@
 let itensQ = 0;
 let listItens = []; // Declarei a lista de itens fora das funções para que ela persista entre chamadas
+let valorTotal = 0;
 
 function adicionarItem() {
     let novoItem = {
@@ -48,8 +49,8 @@ function atualizarQuantidade() {
 }
 
 function calcularConta() {
-    console.log(listItens)
-    let valorTotal = 0;
+    // console.log(listItens)
+
 
     // Calcula o valor total dos itens pedidos
     for (let i = 0; i < listItens.length; i++) {
@@ -61,12 +62,15 @@ function calcularConta() {
     let hora = data.getHours();
     console.log(typeof(hora))
 
-    if (hora < 19 && listItens.length > 0) { // Aplica desconto apenas se estiver antes das 19h e houver itens pedidos
+    if (hora > 19 && listItens.length > 0) { // Aplica desconto apenas se estiver antes das 19h e houver itens pedidos
         let desconto = valorTotal * (10/100); 
-        valorTotal -= desconto; // Aplica um desconto de 10%
+        valorTotal += desconto; // Aplica um desconto de 10%
     }
 
     // Exibe o valor total na página HTML
     let valorConta = document.getElementById('valorConta');
     valorConta.value = '\nValor da Conta: R$ ' + valorTotal.toFixed(2);
 }
+
+//CORRIGIR LOGICA (DESCONTO NÃO É DESCONTO)
+   
